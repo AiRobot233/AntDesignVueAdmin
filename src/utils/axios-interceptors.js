@@ -11,6 +11,7 @@ const resp401 = {
         const {message} = options
         if (response.code === 401) {
             message.error('无此权限')
+            return false
         }
         return response
     },
@@ -24,7 +25,8 @@ const resp401 = {
         const {message} = options
         const {response} = error
         if (response.status === 401) {
-            message.error('无此权限')
+            message.error('无此权限!')
+            return false
         }
         return Promise.reject(error)
     }
@@ -35,6 +37,7 @@ const resp403 = {
         const {message} = options
         if (response.code === 403) {
             message.error('请求被拒绝')
+            return false
         }
         return response
     },
@@ -43,6 +46,7 @@ const resp403 = {
         const {response} = error
         if (response.status === 403) {
             message.error('请求被拒绝')
+            return false
         }
         return Promise.reject(error)
     }
@@ -51,9 +55,11 @@ const resp403 = {
 const error = {
     onFulfilled(response, options) {
         const {message} = options
-        if (response.data.error === 1) {
-            message.error(response.data.message)
-            return false
+        if (response) {
+            if (response.data.error === 1) {
+                message.error(response.data.message)
+                return false
+            }
         }
         return response
     },
@@ -62,6 +68,23 @@ const error = {
         const {response} = error
         if (response.data.error === 1) {
             message.error(response.data.message)
+            return false
+        }
+        return Promise.reject(error)
+    }
+}
+
+const resp412 = {
+    onRejected(error, options) {
+        const {message} = options
+        const {response} = error
+        if (response.status === 412) {
+            let info = ''
+            for(const key in response.data.message){
+                info = response.data.message[key]
+                break;
+            }
+            message.error(info)
             return false
         }
         return Promise.reject(error)
@@ -98,5 +121,5 @@ const reqCommon = {
 
 export default {
     request: [reqCommon], // 请求拦截
-    response: [resp401, resp403, error] // 响应拦截
+    response: [resp401, resp403, resp412, error] // 响应拦截
 }

@@ -37,7 +37,7 @@
                     </a-form-model-item>
 
                     <a-form-model-item label="密码" v-if="id > 0">
-                        <a-input v-model="form.password" placeholder="不填默认不修改密码"/>
+                        <a-input-password v-model="form.password" placeholder="不填默认不修改密码"/>
                     </a-form-model-item>
 
                     <a-form-model-item label="状态" prop="status">

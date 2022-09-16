@@ -40,6 +40,12 @@ const routerMap = {
         icon: 'home',
         component: () => import('@/pages/dashboard/analysis/Analysis')
     },
+    system: {
+        name: '系统设置',
+        icon: 'setting',
+        component: view.blank
+    },
+
     rule: {
         name: '规则配置',
         meta: {

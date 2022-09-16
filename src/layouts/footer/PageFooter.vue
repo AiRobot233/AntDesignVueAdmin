@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="copyright">
-      Copyright<a-icon type="copyright" />{{copyright}}
+      {{copyright}}
     </div>
   </div>
 </template>

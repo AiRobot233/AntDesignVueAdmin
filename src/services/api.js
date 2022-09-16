@@ -15,5 +15,7 @@ module.exports = {
 
     USER: `${BASE_URL}/user`,
 
-    ROLE_SELECT: `${BASE_URL}/role/select`
+    ROLE_SELECT: `${BASE_URL}/role/select`,
+
+    CHANGE_PWD: `${BASE_URL}/change/pwd`,
 }
