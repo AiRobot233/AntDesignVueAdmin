@@ -38,7 +38,7 @@ const routerMap = {
     home: {
         name: '首页',
         icon: 'home',
-        component: () => import('@/pages/dashboard/analysis/Analysis')
+        component: () => import('@/pages/admin/home/Home')
     },
     system: {
         name: '系统设置',
