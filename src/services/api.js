@@ -12,10 +12,14 @@ module.exports = {
     RULE_SELECT: `${BASE_URL}/rule/select`,
 
     ROLE: `${BASE_URL}/role`,
+    ROLE_SELECT: `${BASE_URL}/role/select`,
 
     USER: `${BASE_URL}/user`,
 
-    ROLE_SELECT: `${BASE_URL}/role/select`,
-
     CHANGE_PWD: `${BASE_URL}/change/pwd`,
+
+    DICTIONARY: `${BASE_URL}/dictionary`,
+    DICTIONARY_SELECT: `${BASE_URL}/dictionary/select`,
+    UNIT_DICTIONARY: `${BASE_URL}/unit/dictionary`,
+
 }

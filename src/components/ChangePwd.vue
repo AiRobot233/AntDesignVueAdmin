@@ -16,25 +16,22 @@
                 :wrapper-col="{ span: 14 }"
         >
             <a-form-model-item prop="password" label="旧密码">
-                <a-input
+                <a-input-password
                         v-model="form.password"
                         placeholder="请输入旧密码"
-                        type="password"
-                ></a-input>
+                ></a-input-password>
             </a-form-model-item>
             <a-form-model-item prop="newPassword" label="新密码" has-feedback>
-                <a-input
+                <a-input-password
                         v-model="form.newPassword"
                         placeholder="请输入新密码"
-                        type="password"
-                ></a-input>
+                ></a-input-password>
             </a-form-model-item>
             <a-form-model-item prop="newPassword2" label="确认新密码" has-feedback>
-                <a-input
+                <a-input-password
                         v-model="form.newPassword2"
                         placeholder="请再次输入新密码"
-                        type="password"
-                ></a-input>
+                ></a-input-password>
             </a-form-model-item>
 
         </a-form-model>

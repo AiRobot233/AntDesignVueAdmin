@@ -75,6 +75,16 @@ const routerMap = {
         },
         icon: 'user',
         component: () => import('@/pages/admin/user/User')
+    },
+    dictionary: {
+        name: '字典管理',
+        meta: {
+            authority: {
+                role: 'dictionary'
+            }
+        },
+        icon: 'book',
+        component: () => import('@/pages/admin/dictionary/Dictionary')
     }
 }
 export default routerMap
