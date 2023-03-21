@@ -54,6 +54,10 @@
                         </a-select>
                     </a-form-model-item>
 
+                  <a-form-model-item label="按钮权限" v-if="isMethod">
+                      <a-input v-model="form.tag" placeholder="请输入按钮权限"/>
+                  </a-form-model-item>
+
                 </a-form-model>
             </a-modal>
 
@@ -131,6 +135,7 @@
                     type: undefined,
                     router: '',
                     method: undefined,
+                    tag: ''
                 },
 
                 rules: {
