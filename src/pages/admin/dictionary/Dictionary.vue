@@ -5,7 +5,7 @@
         </a-layout-header>
         <a-layout-content :style="{padding: '24px', background: '#fff', minHeight: '280px' }">
             <div style="width: 100%;height: 50px">
-                <a-button type="primary" @click="showModal" v-auth="`POST`">
+                <a-button type="primary" @click="showModal" v-auth="`create`">
                     新增
                 </a-button>
             </div>
@@ -55,7 +55,7 @@
                     rowKey="id"
             >
                 <span slot="action" slot-scope="text, record">
-                  <a @click="edit(record)" v-auth="`PUT`">修改</a>
+                  <a @click="edit(record)" v-auth="`update`">修改</a>
                   <a-divider type="vertical"/>
                   <a-popconfirm
                           title="确定删除吗？"
@@ -64,7 +64,7 @@
                           @confirm="delConfirm(record)"
                   >
                     <a href="#" v-if="record.children !== null" :disabled="true">删除</a>
-                    <a href="#" v-else v-auth="`DELETE`">删除</a>
+                    <a href="#" v-else v-auth="`delete`">删除</a>
                   </a-popconfirm>
                 </span>
             </a-table>

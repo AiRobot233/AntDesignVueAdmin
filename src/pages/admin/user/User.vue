@@ -5,9 +5,20 @@
         </a-layout-header>
         <a-layout-content :style="{padding: '24px', background: '#fff', minHeight: '280px' }">
             <div style="width: 100%;height: 50px">
-                <a-button type="primary" @click="showModal" v-auth="`POST`">
-                    新增
-                </a-button>
+                <a-button type="primary" @click="showModal" v-auth="`create`" style="float: left">新增</a-button>
+
+                <div style="float: right;">
+                    <a-tree-select
+                            v-model="search.role_id"
+                            style="width: 160px;margin-right: 10px"
+                            :treeData="roleData"
+                            placeholder="请选择角色组搜索"
+                            :replaceFields="{children:'children', title:'name', key:'id', value: 'id'}"
+                            :allowClear="true"
+                            @change="searchTree"
+                    />
+                    <a-input-search v-model="search.keyword" style="width: 250px" placeholder="名称/电话搜索" enter-button @search="onSearch"/>
+                </div>
             </div>
 
             <a-modal
@@ -48,7 +59,6 @@
                     </a-form-model-item>
 
                 </a-form-model>
-
             </a-modal>
 
             <a-table
@@ -57,6 +67,7 @@
                     rowKey="id"
                     :pagination="pagination"
                     @change="tableChange"
+                    :loading="loading"
             >
 
                 <span slot="status" slot-scope="text, record">
@@ -66,7 +77,7 @@
 
                 <span slot="action" slot-scope="text, record">
                   <a @click="edit(record)" v-if="record.id === 1" :disabled="true">修改</a>
-                  <a @click="edit(record)" v-else v-auth="`PUT`">修改</a>
+                  <a @click="edit(record)" v-else v-auth="`update`">修改</a>
                   <a-divider type="vertical"/>
                   <a-popconfirm
                           title="确定删除吗？"
@@ -75,7 +86,7 @@
                           @confirm="delConfirm(record)"
                   >
                     <a href="#" v-if="record.id === 1" :disabled="true">删除</a>
-                    <a href="#" v-else v-auth="`DELETE`">删除</a>
+                    <a href="#" v-else v-auth="`delete`">删除</a>
                   </a-popconfirm>
                 </span>
 
@@ -141,6 +152,7 @@
                         this.pagination.pageSize = pageSize
                     },
                 },
+                loading: false,
 
                 modal: {
                     visible: false,
@@ -161,9 +173,16 @@
                 },
 
                 roleData: [],
+
+                //搜索
+                search: {
+                    keyword: '',
+                    role_id: undefined
+                }
             }
         },
         mounted() {
+            this.getRoleData()
             this.fetch({page: 1, pageSize: 10});
         },
         methods: {
@@ -254,6 +273,17 @@
                     }
                 })
             },
+
+            //搜索
+            onSearch(value) {
+                this.search.keyword = value
+                this.fetch(Object.assign({page: 1, pageSize: 10}, this.search));
+            },
+            //树状搜索
+            searchTree(value) {
+                this.search.role_id = value
+                this.fetch(Object.assign({page: 1, pageSize: 10}, this.search));
+            }
         }
     }
 </script>
