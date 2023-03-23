@@ -89,7 +89,7 @@
 </template>
 
 <script>
-    import {RULE, RULE_SELECT} from '@/services/api'
+    import {RULE, SUB} from '@/services/api'
     import {METHOD, request} from "@/utils/request";
 
     const columns = [
@@ -273,7 +273,7 @@
             },
             //内部获取下拉数据
             async getTreeData() {
-                request(RULE_SELECT, METHOD.GET, {type: 'page'}).then(res => {
+                request(SUB, METHOD.POST, {'rule': 'page'}).then(res => {
                     if (res) {
                         this.treeData = res.data.data
                     }

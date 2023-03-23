@@ -9,17 +9,15 @@ module.exports = {
     GOODS_COLUMNS: `${BASE_URL}/columns`,
 
     RULE: `${BASE_URL}/rule`,
-    RULE_SELECT: `${BASE_URL}/rule/select`,
 
     ROLE: `${BASE_URL}/role`,
-    ROLE_SELECT: `${BASE_URL}/role/select`,
 
     USER: `${BASE_URL}/user`,
 
     CHANGE_PWD: `${BASE_URL}/change/pwd`,
 
     DICTIONARY: `${BASE_URL}/dictionary`,
-    DICTIONARY_SELECT: `${BASE_URL}/dictionary/select`,
     UNIT_DICTIONARY: `${BASE_URL}/unit/dictionary`,
 
+    SUB: `${BASE_URL}/sub`,//组件接口
 }
